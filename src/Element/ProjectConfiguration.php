@@ -69,7 +69,7 @@ class ProjectConfiguration
             $useIncludePath = false;
         }
         if (null === $preferredInstall) {
-            $preferredInstall = InstallationMethod::AUTO();
+            $preferredInstall = InstallationMethod::AUTO;
         }
         if (null === $githubProtocols) {
             $githubProtocols = array('git', 'https');
@@ -111,7 +111,7 @@ class ProjectConfiguration
             $notifyOnInstall = true;
         }
         if (null === $discardChanges) {
-            $discardChanges = VcsChangePolicy::IGNORE();
+            $discardChanges = VcsChangePolicy::IGNORE;
         }
 
         $this->processTimeout = $processTimeout;

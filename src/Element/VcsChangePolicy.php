@@ -11,25 +11,19 @@
 
 namespace Eloquent\Composer\Configuration\Element;
 
-use Eloquent\Enumeration\AbstractEnumeration;
-
-/**
- * An enumeration of version control working copy change policies.
- */
-final class VcsChangePolicy extends AbstractEnumeration
+enum VcsChangePolicy
 {
-    /**
-     * Ignore working copy changes.
-     */
-    const IGNORE = false;
+    case IGNORE;
+    case DISCARD;
+    case STASH;
 
-    /**
-     * Discard working copy changes.
-     */
-    const DISCARD = true;
-
-    /**
-     * Stash working copy changes and re-apply.
-     */
-    const STASH = 'stash';
+    public static function fromValue(mixed $value): ?self
+    {
+        return match ($value) {
+            false => self::IGNORE,
+            true => self::DISCARD,
+            'stash' => self::STASH,
+            default => null,
+        };
+    }
 }

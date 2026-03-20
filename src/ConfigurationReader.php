@@ -257,7 +257,7 @@ class ConfigurationReader
     protected function createStability($stability)
     {
         if (null !== $stability) {
-            $stability = Stability::memberByValue($stability, false);
+            $stability = Stability::tryFrom(strtolower($stability));
         }
 
         return $stability;
@@ -432,7 +432,7 @@ class ConfigurationReader
     protected function createInstallationMethod($method)
     {
         if (is_string($method)) {
-            return InstallationMethod::memberByValue($method, false);
+            return InstallationMethod::tryFrom(strtolower($method));
         }
 
         if (is_object($method)) {
@@ -440,7 +440,7 @@ class ConfigurationReader
 
             foreach ($method as $project => $projectMethod) {
                 $methods[$project] =
-                    InstallationMethod::memberByValue($projectMethod, false);
+                    InstallationMethod::tryFrom(strtolower($projectMethod));
             }
 
             return $methods;
@@ -459,7 +459,7 @@ class ConfigurationReader
     protected function createVcsChangePolicy($policy)
     {
         if (null !== $policy) {
-            $policy = VcsChangePolicy::memberByValue($policy, false);
+            $policy = VcsChangePolicy::fromValue($policy);
         }
 
         return $policy;

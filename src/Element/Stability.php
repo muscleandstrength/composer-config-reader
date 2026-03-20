@@ -11,35 +11,11 @@
 
 namespace Eloquent\Composer\Configuration\Element;
 
-use Eloquent\Enumeration\AbstractEnumeration;
-
-/**
- * An enumeration of package stabilities.
- */
-final class Stability extends AbstractEnumeration
+enum Stability: string
 {
-    /**
-     * Development stability.
-     */
-    const DEV = 'dev';
-
-    /**
-     * Alpha stability.
-     */
-    const ALPHA = 'alpha';
-
-    /**
-     * Beta stability.
-     */
-    const BETA = 'beta';
-
-    /**
-     * Release candidate stability.
-     */
-    const RC = 'rc';
-
-    /**
-     * Stable stability.
-     */
-    const STABLE = 'stable';
+    case DEV = 'dev';
+    case ALPHA = 'alpha';
+    case BETA = 'beta';
+    case RC = 'rc';
+    case STABLE = 'stable';
 }

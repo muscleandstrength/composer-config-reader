@@ -141,7 +141,7 @@ class Configuration
             $includePath = array();
         }
         if (null === $minimumStability) {
-            $minimumStability = Stability::STABLE();
+            $minimumStability = Stability::STABLE;
         }
         if (null === $preferStable) {
             $preferStable = false;
